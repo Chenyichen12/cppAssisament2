@@ -7,6 +7,7 @@
  ****************************************************/
 
 #include "Maze.h"
+#include <cstring>
 #include <fstream>
 #include <iostream>
 
@@ -93,6 +94,8 @@ void SolveMaze() {
         TurnLeft(heading);
     }
   }
+  bool ifHasWent[17 * 17];
+  memset(ifHasWent, 0, 1);
   posi[i] = pos;
   i++;
   if (i >= 400) {
@@ -103,8 +106,11 @@ void SolveMaze() {
   for (int j = 0; j < i; j++) {
     if (posi[j] < 0)
       continue;
+    if (ifHasWent[posi[j]])
+      continue;
     cout << "Current position: (" << posi[j] / mazeWidth << ','
          << posi[j] % mazeWidth << ')' << endl;
+    ifHasWent[posi[j]] = true;
     counter++;
   }
   cout << "total steps:" << counter << endl;
