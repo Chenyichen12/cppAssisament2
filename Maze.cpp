@@ -96,7 +96,7 @@ void SolveMaze() {
         TurnLeft(heading);
     }
   }
-  bool ifHasWent[mazeHeight * mazeHeight];
+  bool ifHasWent[mazeWidth * mazeHeight];
   memset(ifHasWent, 0, 1);
   posi[i] = pos;
   i++;
